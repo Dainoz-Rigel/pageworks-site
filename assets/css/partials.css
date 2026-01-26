@@ -1,0 +1,199 @@
+/* =========================
+   Header
+   ========================= */
+
+.site-header {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid #E4E7EC;
+  z-index: 1030;
+}
+
+.navbar {
+  padding: 0.75rem 0;
+  background-color: var(--bg-color);
+}
+
+.logo-box {
+  width: 44px;
+  height: 44px;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.nav-link {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  margin-left: 1.25rem;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--accent);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.nav-cta {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.nav-cta:hover,
+.nav-cta:focus,
+.nav-cta.active {
+  color: var(--accent);
+}
+
+/* Navbar toggler (hamburger) */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Ensure toggler icon is visible in dark mode */
+.navbar-toggler-icon {
+  filter: invert(0);
+}
+
+/* Mobile spacing + background */
+@media (max-width: 991px) {
+  .nav-link {
+    margin: 0.5rem 0;
+  }
+
+  .navbar-collapse {
+    background-color: var(--bg-color);
+    padding: 0.75rem 0;
+  }
+}
+
+/* =========================
+   Dark theme (system)
+   ========================= */
+
+@media (prefers-color-scheme: dark) {
+  .site-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar {
+    background-color: var(--bg-color);
+  }
+
+  .nav-link {
+    color: var(--text-color);
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
+}
+
+/* =========================
+   Forced dark mode
+   ========================= */
+
+.force-dark .site-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.force-dark .navbar {
+  background-color: var(--bg-color);
+}
+
+.force-dark .nav-link {
+  color: var(--text-color);
+}
+
+.force-dark .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* =========================
+   Footer
+   ========================= */
+
+.site-footer {
+  border-top: 1px solid #E4E7EC;
+  padding: 1.25rem 0;
+  margin-top: 4rem;
+}
+
+.footer-brand {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.footer-link {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+.footer-sep {
+  margin: 0 0.5rem;
+  color: var(--muted-text);
+}
+
+.footer-legal {
+  font-size: 0.85rem;
+}
+
+/* Dark theme footer */
+@media (prefers-color-scheme: dark) {
+  .site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+.force-dark .site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   Logo Wordmark (Theme-aware)
+   ========================= */
+
+.navbar-brand {
+  gap: 0.5rem;
+}
+
+.logo-wordmark {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-color);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+/* Hover aligns with nav behavior */
+.navbar-brand:hover .logo-wordmark {
+  color: var(--accent);
+}
+
+/* Hide wordmark on smaller screens */
+@media (max-width: 768px) {
+  .logo-wordmark {
+    display: none;
+  }
+}

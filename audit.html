@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Landing Page Audit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Favicon + theme partial -->
+  <!-- favicon-partial -->
+
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F7FA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1F2933" media="(prefers-color-scheme: dark)">
+  <meta name="msapplication-TileColor" content="#2563EB">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Source+Sans+Pro:wght@400;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/partials.css" />
+</head>
+<body>
+
+<!-- Header -->
+<!-- header-partial -->
+
+<main id="main-content" class="container-fluid min-vh-100">
+  <div class="container content-wrap py-5">
+
+    <!-- =========================
+         FREE PRE-AUDIT VIEW
+         ========================= -->
+    <section id="pre-audit-view" class="audit-view">
+
+      <section class="mb-5">
+        <h1 class="headline mb-3">Landing Page Pre-Audit</h1>
+        <p class="positioning">
+          A short assessment to determine whether a full landing page audit is appropriate.
+          This step collects context only. No feedback or recommendations are provided.
+        </p>
+      </section>
+
+      <section class="mb-5">
+        <h3 class="section-title mb-3">Pre-Audit Form</h3>
+
+        <form id="pre-audit-form">
+
+          <div class="mb-3">
+            <label class="form-label">Full Name *</label>
+            <input type="text" name="full_name" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email *</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Landing Page URL *</label>
+            <input type="url" name="landing_page_url" class="form-control" required placeholder="https://">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Primary action visitors should take *</label>
+            <select name="primary_action" class="form-select" required>
+              <option value="">Select one</option>
+              <option>Join a waitlist</option>
+              <option>Book a call</option>
+              <option>Purchase a product</option>
+              <option>Sign up for free access</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Are you currently sending traffic to this page? *</label>
+            <select name="current_traffic" class="form-select" required>
+              <option value="">Select one</option>
+              <option>Yes — paid traffic</option>
+              <option>Yes — organic traffic</option>
+              <option>No — live but not promoted</option>
+              <option>No — still a draft</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">In one sentence, what are you offering? *</label>
+            <textarea name="offer_description" class="form-control" rows="2" required></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-lg" type="submit">Submit Pre-Audit</button>
+        </form>
+
+        <p class="muted-note mt-3">
+          If it looks like a full audit would be useful, you'll receive an email with next steps.
+        </p>
+      </section>
+
+    </section>
+
+    <!-- =========================
+         PAID AUDIT VIEW
+         ========================= -->
+    <section id="paid-audit-view" class="audit-view d-none">
+
+      <section class="mb-5">
+        <h1 class="headline mb-3">Landing Page Audit</h1>
+        <p class="positioning">
+          A written, manual review focused on clarity, structure, and conversion risk.
+          Communication and delivery are handled via email.
+        </p>
+      </section>
+
+      <section class="mb-5">
+        <div class="service-card">
+          <h4>Audit Fee</h4>
+          <p class="service-desc"><strong>₦150,000</strong> — one-time fee</p>
+          <p class="service-desc">Delivery within 3–5 business days after payment confirmation.</p>
+        </div>
+      </section>
+
+      <section class="mb-5">
+        <h3 class="section-title mb-3">Audit Request Form</h3>
+
+        <form id="audit-form">
+
+          <div class="mb-3">
+            <label class="form-label">Full Name *</label>
+            <input type="text" name="full_name" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Professional Email *</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Landing Page URL *</label>
+            <input type="url" name="landing_page_url" class="form-control" required placeholder="https://">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Brief Description of the Offer *</label>
+            <textarea name="offer_description" class="form-control" rows="3" placeholder="What are you selling, to whom, and at what price point?" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Optional Notes</label>
+            <textarea name="optional_notes" class="form-control" rows="3" placeholder="Anything specific you want me to pay attention to?"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg">Get the Landing Page Audit</button>
+        </form>
+
+        <p class="muted-note mt-3">
+          You’ll receive payment instructions by email if you choose to proceed.
+        </p>
+
+      </section>
+
+    </section>
+
+  </div>
+</main>
+
+<!-- =========================
+     PAYMENT HANDOFF MODAL
+     ========================= -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content service-card">
+      <div class="modal-body">
+        <h4 class="mb-3">Landing Page Audit — Next Steps</h4>
+        <p class="service-desc">Thanks for your request. I’ll review the details you submitted.</p>
+        <p class="service-desc">You’ll receive an email shortly with payment instructions for the <strong>₦150,000 landing page audit</strong>.</p>
+        <p class="service-desc">The audit begins once payment is confirmed. Delivery is typically within 3–5 business days. All communication and delivery are handled via email.</p>
+        <button type="button" class="btn btn-primary w-100 mt-3" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================
+     PRE-AUDIT CONFIRMATION MODAL
+     ========================= -->
+<div class="modal fade" id="preAuditModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content service-card">
+      <div class="modal-body">
+        <h4 class="mb-3">Thanks — your pre-audit has been received.</h4>
+        <p class="service-desc">I’ll review your page to determine whether a full landing page audit would be useful.</p>
+        <p class="service-desc">If a full audit would be useful, you'll receive an email with next steps.</p>
+        <button type="button" class="btn btn-primary w-100 mt-3" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================
+     ERROR MODAL
+     ========================= -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content service-card">
+      <div class="modal-body">
+        <h4 class="mb-3 text-danger">Error</h4>
+        <p class="service-desc" id="errorModalMessage"></p>
+        <button type="button" class="btn btn-secondary w-100 mt-3" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<!-- footer-partial -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
