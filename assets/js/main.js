@@ -43,7 +43,7 @@ $('#pre-audit-form').on('submit', function (e) {
   const $form = $(this);
   const data = $form.serialize();
 
-  $.post('http://localhost/form-backend/submit_pre_audit.php', data, function (response) {
+  $.post('https://spwbackend.iceiy.com/submit_pre_audit.php', data, function (response) {
     // Check for proper JSON structure
     if (response && typeof response.success !== 'undefined') {
       if (response.success) {
@@ -69,7 +69,7 @@ $('#audit-form').on('submit', function (e) {
   const $form = $(this);
   const data = $form.serialize();
 
-  $.post('http://localhost/form-backend/submit_paid_audit.php', data, function (response) {
+  $.post('https://spwbackend.iceiy.com/submit_paid_audit.php', data, function (response) {
     if (response && typeof response.success !== 'undefined') {
       if (response.success) {
         const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
