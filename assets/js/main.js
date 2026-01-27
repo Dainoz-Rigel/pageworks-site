@@ -41,10 +41,15 @@ $(document).ready(function () {
 $('#pre-audit-form').on('submit', function (e) {
   e.preventDefault();
   const $form = $(this);
-  const data = $form.serialize();
 
-  $.post('https://spwbackend.iceiy.com/submit_pre_audit.php', data, function (response) {
-    // Check for proper JSON structure
+  // Serialize form as a URL-encoded object
+  const dataObj = {};
+  $form.serializeArray().forEach(item => {
+    dataObj[item.name] = item.value;
+  });
+
+  // Submit via jQuery $.post
+  $.post('https://spwbackend.iceiy.com/submit_pre_audit.php', dataObj, function (response) {
     if (response && typeof response.success !== 'undefined') {
       if (response.success) {
         const modal = new bootstrap.Modal(document.getElementById('preAuditModal'));
@@ -67,9 +72,13 @@ $('#pre-audit-form').on('submit', function (e) {
 $('#audit-form').on('submit', function (e) {
   e.preventDefault();
   const $form = $(this);
-  const data = $form.serialize();
 
-  $.post('https://spwbackend.iceiy.com/submit_paid_audit.php', data, function (response) {
+  const dataObj = {};
+  $form.serializeArray().forEach(item => {
+    dataObj[item.name] = item.value;
+  });
+
+  $.post('https://spwbackend.iceiy.com/submit_paid_audit.php', dataObj, function (response) {
     if (response && typeof response.success !== 'undefined') {
       if (response.success) {
         const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
