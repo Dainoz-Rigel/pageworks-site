@@ -26,8 +26,6 @@ $(document).ready(function () {
       });
   });
 
-$(document).ready(function () {
-
   // =========================
   // Show error modal
   // =========================
