@@ -26,6 +26,8 @@ $(document).ready(function () {
       });
   });
 
+$(document).ready(function () {
+
   // =========================
   // Show error modal
   // =========================
@@ -35,64 +37,56 @@ $(document).ready(function () {
     modal.show();
   }
 
-// =========================
-// Pre-Audit Form Submission
-// =========================
-$('#pre-audit-form').on('submit', function (e) {
-  e.preventDefault();
-  const $form = $(this);
+  // =========================
+  // Helper: Submit form via Fetch
+  // =========================
+  async function submitForm(url, dataObj, successModalId, formEl) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(dataObj)
+      });
 
-  // Serialize form as a URL-encoded object
-  const dataObj = {};
-  $form.serializeArray().forEach(item => {
-    dataObj[item.name] = item.value;
-  });
+      if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
 
-  // Submit via jQuery $.post
-  $.post('https://spwbackend.iceiy.com/submit_pre_audit.php', dataObj, function (response) {
-    if (response && typeof response.success !== 'undefined') {
-      if (response.success) {
-        const modal = new bootstrap.Modal(document.getElementById('preAuditModal'));
+      const data = await res.json();
+
+      if (data.success) {
+        const modal = new bootstrap.Modal(document.getElementById(successModalId));
         modal.show();
-        $form[0].reset();
+        formEl.reset();
       } else {
-        showError(response.message || 'Submission failed');
+        showError(data.message || 'Submission failed');
       }
-    } else {
-      showError('Invalid server response.');
+    } catch (err) {
+      console.error(err);
+      showError('Server error. Please try again later.');
     }
-  }, 'json').fail(function () {
-    showError('Server error. Please try again later.');
-  });
-});
+  }
 
-// =========================
-// Paid Audit Form Submission
-// =========================
-$('#audit-form').on('submit', function (e) {
-  e.preventDefault();
-  const $form = $(this);
-
-  const dataObj = {};
-  $form.serializeArray().forEach(item => {
-    dataObj[item.name] = item.value;
+  // =========================
+  // Pre-Audit Form Submission
+  // =========================
+  $('#pre-audit-form').on('submit', function (e) {
+    e.preventDefault();
+    const $form = this;
+    const dataObj = {};
+    $(this).serializeArray().forEach(item => dataObj[item.name] = item.value);
+    submitForm('https://spwbackend.iceiy.com/submit_pre_audit.php', dataObj, 'preAuditModal', $form);
   });
 
-  $.post('https://spwbackend.iceiy.com/submit_paid_audit.php', dataObj, function (response) {
-    if (response && typeof response.success !== 'undefined') {
-      if (response.success) {
-        const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
-        modal.show();
-        $form[0].reset();
-      } else {
-        showError(response.message || 'Submission failed');
-      }
-    } else {
-      showError('Invalid server response.');
-    }
-  }, 'json').fail(function () {
-    showError('Server error. Please try again later.');
+  // =========================
+  // Paid Audit Form Submission
+  // =========================
+  $('#audit-form').on('submit', function (e) {
+    e.preventDefault();
+    const $form = this;
+    const dataObj = {};
+    $(this).serializeArray().forEach(item => dataObj[item.name] = item.value);
+    submitForm('https://spwbackend.iceiy.com/submit_paid_audit.php', dataObj, 'paymentModal', $form);
   });
+
 });
 
   // =========================
