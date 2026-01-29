@@ -26,66 +26,43 @@ $(document).ready(function () {
       });
   });
 
-  // =========================
-  // Show error modal
-  // =========================
-  function showError(message) {
-    $('#errorModalMessage').text(message);
-    const modal = new bootstrap.Modal(document.getElementById('errorModal'));
-    modal.show();
-  }
 
   // =========================
-  // Helper: Submit form via Fetch
+  // URL-based Success / Error Modals
   // =========================
-  async function submitForm(url, dataObj, successModalId, formEl) {
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(dataObj)
-      });
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const result = params.get('result');
 
-      if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+    if (!result) return;
 
-      const data = await res.json();
+    let modalId = null;
 
-      if (data.success) {
-        const modal = new bootstrap.Modal(document.getElementById(successModalId));
-        modal.show();
-        formEl.reset();
-      } else {
-        showError(data.message || 'Submission failed');
-      }
-    } catch (err) {
-      console.error(err);
-      showError('Server error. Please try again later.');
+    switch (result) {
+      case 'pre_audit_success':
+        modalId = 'preAuditModal';
+        break;
+      case 'paid_audit_success':
+        modalId = 'paymentModal';
+        break;
+      case 'error':
+        modalId = 'errorModal';
+        break;
     }
-  }
 
-  // =========================
-  // Pre-Audit Form Submission
-  // =========================
-  $('#pre-audit-form').on('submit', function (e) {
-    e.preventDefault();
-    const $form = this;
-    const dataObj = {};
-    $(this).serializeArray().forEach(item => dataObj[item.name] = item.value);
-    submitForm('https://spwbackend.iceiy.com/submit_pre_audit.php', dataObj, 'preAuditModal', $form);
-  });
+    if (modalId) {
+      const modalEl = document.getElementById(modalId);
+      if (modalEl) {
+        new bootstrap.Modal(modalEl).show();
+      }
+    }
 
-  // =========================
-  // Paid Audit Form Submission
-  // =========================
-  $('#audit-form').on('submit', function (e) {
-    e.preventDefault();
-    const $form = this;
-    const dataObj = {};
-    $(this).serializeArray().forEach(item => dataObj[item.name] = item.value);
-    submitForm('https://spwbackend.iceiy.com/submit_paid_audit.php', dataObj, 'paymentModal', $form);
-  });
+    // Clean URL (remove token after use)
+    window.history.replaceState({}, document.title, window.location.pathname);
+  })();
 
 });
+
 
   // =========================
   // Audit View Toggle (URL-based)
